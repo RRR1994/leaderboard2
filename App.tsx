@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { LeaderboardEntry } from './types.ts';
-import { INITIAL_DATA } from './constants.tsx';
-import { Header } from './components/Header.tsx';
-import { PyramidLayout } from './components/PyramidLayout.tsx';
+import { LeaderboardEntry } from './types';
+import { INITIAL_DATA } from './constants';
+import { Header } from './components/Header';
+import { PyramidLayout } from './components/PyramidLayout';
 import { Plus, X, Camera, MessageSquare, ShieldCheck, Loader2, Trophy, CreditCard, Lock, AlertTriangle } from 'lucide-react';
 
 type ModalState = 'FORM' | 'PAYPAL_GATEWAY' | 'PROCESSING' | 'CONFIRMED' | 'ERROR';
@@ -92,9 +91,8 @@ const App: React.FC = () => {
     return { border: 'border-white/20', text: 'text-white' };
   };
 
-  // Initial options for PayPal provider
   const initialOptions = {
-    clientId: "test", // Replace with real Client ID in production
+    clientId: "test",
     currency: "GBP",
     intent: "capture",
   };
@@ -271,7 +269,7 @@ const App: React.FC = () => {
                           }}
                           onError={(err) => {
                             console.error("PayPal Error:", err);
-                            setErrorMessage('The PayPal host refused the connection. This usually happens in restricted sandbox environments. Try in a standard browser tab.');
+                            setErrorMessage('The PayPal host refused the connection. Ensure your internet is active.');
                             setModalState('ERROR');
                           }}
                         />

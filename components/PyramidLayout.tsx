@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { LeaderboardEntry } from '../types.ts';
-import { PyramidItem } from './PyramidItem.tsx';
+import { LeaderboardEntry } from '../types';
+import { PyramidItem } from './PyramidItem';
 
 interface PyramidLayoutProps {
   entries: LeaderboardEntry[];
@@ -23,8 +22,6 @@ export const PyramidLayout: React.FC<PyramidLayoutProps> = ({ entries, onSelectI
     }));
     rows.push(row);
     currentIndex += rowSize;
-    // Cap the row growth or keep it consistent? 
-    // For 1000 items, standard pyramid rows work well.
     rowSize++;
   }
 
